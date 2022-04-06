@@ -2,8 +2,8 @@
 var generateBtn = document.querySelector("#generate");
 
 //Arrays for potential character choices
-var numbers = ['0','1','2','3','4','5','6','7','8','9']
-var characters=['@', '%', '+', '/', "'", '!', '#', '$', '^', '?', ':', ',', ')', '(', '}', '{', ']', '[', '~', '-', '_', '.']
+var numbers = ['0','1','2','3','4','5','6','7','8','9'];
+var characters=['@', '%', '+', '/', "'", '!', '#', '$', '^', '?', ':', ',', ')', '(', '}', '{', ']', '[', '~', '-', '_', '.'];
 var lowerCase=['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
 var upperCase=['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
 
@@ -11,7 +11,7 @@ var upperCase=['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 
   function questions() {
   var isValid = false;
   do {
-  var length = prompt("Please select a password length between 8 and 128.")
+  var length = prompt("Please select a password length between 8 and 128.");
   var askNumbers= confirm("Do you wish to include any numbers?");
   var askCharacters =confirm("Do you want to include and special characters?");
   var askLowerCase = confirm("Do you want to include any lower case letters?");
@@ -23,7 +23,7 @@ var upperCase=['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 
   askUpperCase: askUpperCase,
   askSpecial: askCharacters,
 } 
-  if ((length < 8)||(length > 128))
+  if((length < 8)||(length > 128))
   alert("Please select a password length between 8 and 128.")
   else if((!askNumbers)&&(!askLowerCase)&&(!askUpperCase)&&(!askCharacters))
   alert("Please choose atleast one type ie Upper case, Lower case, Number, Character.")
@@ -34,34 +34,34 @@ var upperCase=['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 
 return responses;
 }
 // This function joins all the user responses and then creates the result
-function createPassword() {
+function generatePassword() {
   var passwordOptions= questions();
   var passwordCombo= [];
   var finalPassword = "";
 
   if (passwordOptions.askNumbers) {
     for (var i of numbers)
-      possibleCombo.push(i);
+      passwordCombo.push(i);
   }
   if (passwordOptions.askLowerCase) {
     for (var i of lowerCase)
-      possibleCombo.push(i);
+      passwordCombo.push(i);
   }
   if (passwordOptions.askUpperCase) {
     for (var i of upperCase)
-      possibleCombo.push(i);
+      passwordCombo.push(i);
   }
-  if (passwordOptions.askSpecial) {
+  if (passwordOptions.askCharacters) {
     for (var i of special)
-      possibleCombo.push(i);
+      passwordCombo.push(i);
   }
 
 
-  console.log(possibleCombo);
+  console.log(passwordCombo);
 
 
   for (var i = 0; i < passwordOptions.length; i++) {
-    finalPassword += possibleCombo[Math.floor(Math.random() * possibleCombo.length)];
+    finalPassword += passwordCombo[Math.floor(Math.random() * passwordCombo.length)];
     
   }
   console.log(finalPassword);
@@ -78,5 +78,4 @@ function writePassword() {
 }
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
-
-  
+ 
