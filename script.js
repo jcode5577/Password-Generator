@@ -26,9 +26,9 @@ var upperCase=['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 
   if((length < 8)||(length > 128))
   alert("Please select a password length between 8 and 128.")
   else if((!askNumbers)&&(!askLowerCase)&&(!askUpperCase)&&(!askCharacters))
-  alert("Please choose atleast one type ie Upper case, Lower case, Number, Character.")
+  alert("Please choose atleast one type, ie Upper case, Lower case, Number, Character.")
     else
-  isValid= true;
+  isValid= true;                                       
 
   } while(!isValid);
 return responses;
